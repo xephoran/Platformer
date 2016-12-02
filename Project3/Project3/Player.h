@@ -7,7 +7,7 @@ class Player
 {
 public:
 	Player();
-	int Main(std::vector<int> keyPressed);
+	int Main(std::vector<int> keyPressed, std::vector<int> courseLocation);
 	sf::Sprite draw();
 private:
 	std::array<int, 2> playerLocation = { 0,1000 };

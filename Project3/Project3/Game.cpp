@@ -19,8 +19,9 @@ int Game::run()
 	Player player;
 	Input input;
 
-	//vector for key codes
+	//vectors
 	std::vector<int> keysPressed;
+	std::vector<int> levelLocations;
 
 	//starts the game by opening a window
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Window Name");
@@ -40,7 +41,7 @@ int Game::run()
 		keysPressed = input.keysPressed();
 
 		//lets the player class handle operations first
-		player.Main(keysPressed);
+		player.Main(keysPressed, levelLocations);
 
 
 		//drawing everything

@@ -18,7 +18,25 @@ std::array<int, 2> actionCheck(std::vector<int> vector)
 		int number = vector[i];
 		if (number == 2)
 		{
-			keyPressed[0] = 1;
+			if (keyPressed[0] == -1)
+			{
+				keyPressed[0] = 0;
+			}
+			else
+			{
+				keyPressed[0] = 1;
+			}
+		}
+		if (number == 3)
+		{
+			if (keyPressed[0] == 1)
+			{
+				keyPressed[0] = 0;
+			}
+			else
+			{
+				keyPressed[0] = -1;
+			}
 		}
 	}
 	return keyPressed;
@@ -36,27 +54,64 @@ void Player::move(std::array<int,2> actions)
 		Player::direction[0] = 1;
 		Player::playerLocation[0] += momentum[0];
 		std::cout << Player::momentum[0];
-		if (Player::momentum[0] < 1)
+		if (Player::momentum[0] == 0)
 		{
 			Player::momentum[0] = 1;
+		}
+		else if (Player::momentum[0] < 1 && Player::momentum[0] > 0)
+		{
+			Player::momentum[0] += 0.4;
 		}
 		else if (Player::momentum[0] >= 1 && Player::momentum[0] < 10)
 		{
 			Player::momentum[0] += 0.2;
 		}
+		else if (Player::momentum[0] < 0)
+		{
+			Player::momentum[0] += 0.4;
+		}
+		used[0] = 1;
+	}
+	if (actions[0] == -1)
+	{
+		//moving left
+		//TODO: put check for ability to move here:
+
+		//
+		Player::direction[1] = 1;
+		Player::playerLocation[0] += momentum[0];
+		std::cout << Player::momentum[0];
+		if (Player::momentum[0] == 0)
+		{
+			Player::momentum[0] = -1;
+		}
+		else if (Player::momentum[0] > -1 && Player::momentum[0] < 0)
+		{
+			Player::momentum[0] += -0.4;
+		}
+		else if (Player::momentum[0] <= -1 && Player::momentum[0] > -10)
+		{
+			std::cout << "ENTERED MOMENTUM >= 1 thing \n\n\n";
+			Player::momentum[0] += -0.2;
+		}
+		else if (Player::momentum[0] > 0)
+		{
+			Player::momentum[0] += -0.4;
+		}
+		//this is the used for left/right
 		used[0] = 1;
 	}
 
-
-	//does stuff to remove momentum and use remaining momentum
+	//does stuff to remove momentum and use remaining momentum (horizontal)
 	for (int i = 0; i < used.size(); i++)
 	{
 		if (used[i] == 1)
 		{
-
+			//this means nothing needs to be messed with
 		}
 		else if (used[i] == 0)
 		{
+			//this means we werent actively going this way an uh oh, incompatible now!
 			Player::direction[i] = 0;
 			Player::playerLocation[0] += Player::momentum[i];
 			if (Player::momentum[i] > 0)
@@ -64,6 +119,10 @@ void Player::move(std::array<int,2> actions)
 				{Player::momentum[i] += -0.4;}
 			}
 			if (Player::momentum[i] < 0)
+			{
+				Player::momentum[i] += 0.4;
+			}
+			if (Player::momentum[i] < 0.5 && Player::momentum[i] > -0.5)
 			{
 				momentum[i] = 0;
 			}
@@ -76,10 +135,10 @@ Player::Player()
 {
 }
 
-int Player::Main(std::vector<int> keyPressed)
+int Player::Main(std::vector<int> keyPressed, std::vector<int> courseLocation)
 {
 	std::array<int, 2> actions = actionCheck(keyPressed);
-	//setting action number for texture. This needs to be updated to include multi button presses in future
+	//setting action number for texture. This needs to be updated to allow for multi button presses (ex. down and right) in future
 	Player::actionNumber = actions[0];
 	move(actions);
 
@@ -103,6 +162,14 @@ sf::Sprite Player::draw()
 		if (!Player::playerTexture.loadFromFile("images/Player.jpg", sf::IntRect(69, 9, 55, 48)))
 		{
 			std::cout << "COULDNT LOAD TEXURE OH NO!!!";
+		}
+	}
+	if (actionNumber == -1)
+	{
+		//action -1 is moving left(for now)
+		if (!Player::playerTexture.loadFromFile("images/Player.jpg", sf::IntRect(125, 9, 55, 48)))
+		{
+			std::cout << "COULDNT LOAD FROM TEXTURE OH NO!!!";
 		}
 	}
 

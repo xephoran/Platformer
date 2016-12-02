@@ -1,0 +1,2 @@
+Levels will be loaded as both a background and as a vector of intergers (top x, top y, width?, height?) accessed from a .txt file.
+Save the level texture as a jpg.
