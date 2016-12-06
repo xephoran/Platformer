@@ -21,6 +21,18 @@ std::vector<int> Input::keysPressed()
 	{
 		keysPressed.push_back(2);
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		keysPressed.push_back(3);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		keysPressed.push_back(4);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		keysPressed.push_back(5);
+	}
 
 
 	//final return of the vector
