@@ -10,24 +10,33 @@ std::array<int,4> Player::moveCheck(std::vector<sf::IntRect> rectVect)
 {
 	std::array<int, 4> canMove = { 0,0,0,0 };
 	sf::IntRect playerBounds = (sf::IntRect)Player::playerSprite.getGlobalBounds();
-	sf::IntRect xCheckRight(playerBounds.left, playerBounds.top, (playerBounds.width + Player::momentum[0] + 1), playerBounds.height);
-	sf::IntRect xCheckLeft((playerBounds.left - Player::momentum[0] - 1), playerBounds.top, playerBounds.width, playerBounds.height);
-	sf::IntRect yCheckDown((playerBounds.left + 5), playerBounds.top, (playerBounds.width - 10), (playerBounds.height + Player::momentum[1] + 1));
-	sf::IntRect yCheckUp(playerBounds.left, ((int)playerBounds.top + (int)Player::momentum[1] - 1), playerBounds.width, playerBounds.height);
-	sf::IntRect belowCheck(playerBounds.left, (playerBounds.top + 1), playerBounds.width, playerBounds.height);
+	sf::IntRect xCheckRight((playerBounds.left + Player::momentum[0] + 1), (playerBounds.top - 1), playerBounds.width, (playerBounds.height - 2));
+	sf::IntRect xCheckLeft((playerBounds.left - Player::momentum[0] - 1), (playerBounds.top- 1), playerBounds.width, (playerBounds.height - 2));
+	sf::IntRect yCheckDown((playerBounds.left), playerBounds.top, (playerBounds.width), (playerBounds.height + Player::momentum[1] + 1));
+	sf::IntRect yCheckUp((playerBounds.left + 1), ((int)playerBounds.top + (int)Player::momentum[1] - 1), (playerBounds.width - 2), playerBounds.height);
 	for (int i = 0; i < rectVect.size(); i++)
 	{
 
 		if (xCheckRight.intersects(rectVect[i]))
 		{
-			Player::momentum[0] = (rectVect[i].left - (playerBounds.left + playerBounds.width));
+			if (momentum[0] > 0)
+			{
+				Player::momentum[0] = (rectVect[i].left - (playerBounds.left + playerBounds.width) - 1);
+				Player::playerLocation[0] += momentum[0];
+				//std::cout << momentum[0];
+			}
 			canMove[0] = 1;
 		}
 		if (xCheckLeft.intersects(rectVect[i]))
 		{
-			//this is the real problem
-			Player::momentum[0] = (playerBounds.left - (rectVect[i].left + rectVect[i].width));
-			std::cout << (playerBounds.left - (rectVect[i].left + rectVect[i].width));
+			//this may not actually be the thing causing the problem????
+			if (momentum[0] < 0)
+			{
+				Player::momentum[0] = (playerBounds.left - (rectVect[i].left + rectVect[i].width) + 2);
+				Player::playerLocation[0] += -momentum[0];
+				std::cout << (playerBounds.left - (rectVect[i].left + rectVect[i].width) + 1);
+				std::cout << "\n";
+			}
 			canMove[1] = 1;
 		}
 		if (yCheckUp.intersects(rectVect[i]))
@@ -37,15 +46,12 @@ std::array<int,4> Player::moveCheck(std::vector<sf::IntRect> rectVect)
 		if (yCheckDown.intersects(rectVect[i]))
 		{
 
-			std::cout << Player::momentum[0];
-			std::cout << "\n";
-			std::cout << (rectVect[i].top - (playerBounds.top + playerBounds.height));
-			Player::momentum[1] = (rectVect[i].top - (playerBounds.top + playerBounds.height));
+			
+			//std::cout << "\n";
+				Player::momentum[1] = (rectVect[i].top - (playerBounds.top + playerBounds.height));
+				Player::playerLocation[1] += momentum[1];
+				std::cout << Player::momentum[1];
 			canMove[3] = 1;
-		}
-		if (belowCheck.intersects(rectVect[i]))
-		{
-			//Player::momentum[1] = 0;
 		}
 	}
 
@@ -72,7 +78,7 @@ std::array<int, 2> actionCheck(std::vector<int> vector)
 				keyPressed[0] = 1;
 			}
 		}
-		if (number == 3)
+		else if (number == 3)
 		{
 			if (keyPressed[0] == 1)
 			{
@@ -83,7 +89,7 @@ std::array<int, 2> actionCheck(std::vector<int> vector)
 				keyPressed[0] = -1;
 			}
 		}
-		if (number == 4)
+		else if (number == 4)
 		{
 			if (keyPressed[1] == -1)
 			{
@@ -120,9 +126,9 @@ void Player::move(std::array<int,2> actions, std::vector<sf::IntRect> vectRect)
 		//
 		used[0] = 1;
 		Player::direction[0] = 1;
-		Player::playerLocation[0] += momentum[0];
-		if (!(moveCheckArray[0] == 1))
+		if (moveCheckArray[0] == 0)
 		{
+			Player::playerLocation[0] += momentum[0];
 			if (Player::momentum[0] == 0)
 			{
 				Player::momentum[0] = 1;
@@ -139,6 +145,7 @@ void Player::move(std::array<int,2> actions, std::vector<sf::IntRect> vectRect)
 			{
 				Player::momentum[0] += 0.4;
 			}
+			
 		}
 	}
 
@@ -147,9 +154,10 @@ void Player::move(std::array<int,2> actions, std::vector<sf::IntRect> vectRect)
 	{
 		used[0] = 1;
 		Player::direction[0] = 1;
-		Player::playerLocation[0] += momentum[0];
-		if (!(moveCheckArray[1] == 1))
+
+		if (moveCheckArray[1] == 0)
 		{
+			Player::playerLocation[0] += momentum[0];
 			if (Player::momentum[0] == 0 )
 			{
 				Player::momentum[0] = -1;
@@ -175,16 +183,17 @@ void Player::move(std::array<int,2> actions, std::vector<sf::IntRect> vectRect)
 	if (actions[1] == 1)
 	{
 		//Player::direction[1] = 1;
-		Player::playerLocation[1] += momentum[1];
+		
 		if (!(moveCheckArray[1] == 1))
 		{
+			Player::playerLocation[1] += momentum[1];
 			if (Player::momentum[1] == 0)
 			{
 				if (upCheck == 0)
 				{
 					upCheck = 1;
 				}
-				if (upCheck == 1)
+				else if (upCheck == 1)
 				{
 					upCheck = 0;
 					used[1] = 1;
@@ -196,45 +205,37 @@ void Player::move(std::array<int,2> actions, std::vector<sf::IntRect> vectRect)
 	}
 	
 	//does stuff to remove momentum and use remaining momentum
-	for (int i = 0; i < 2; i++)
+	if (used[0] == 0)
 	{
-		if (used[i] == 1)
+		//this means we werent actively going this way
+		//Player::direction[i] = 0;
+		
+		if ((moveCheckArray[0] != 1) && (moveCheckArray[1] != 1))
 		{
-			//this means nothing needs to be messed with
-		}
-		else if (used[i] == 0)
-		{
-			//this means we werent actively going this way
-			Player::direction[i] = 0;
-			Player::moveCheck(vectRect);
-			Player::playerLocation[i] += Player::momentum[i];
-			if ((moveCheckArray[0] != 1) || (moveCheckArray[1] != 1))
-			{
-				//handling horizontal
-				if (i == 0)
+			Player::playerLocation[0] += Player::momentum[0];
+			//handling horizontal
+				if (Player::momentum[0] > 0)
 				{
-					if (Player::momentum[i] > 0)
-					{
-						{Player::momentum[i] += -0.4;}
-					}
-					if (Player::momentum[i] < 0)
-					{
-						Player::momentum[i] += 0.4;
-					}
-					if (Player::momentum[i] < 0.5 && Player::momentum[i] > -0.5)
-					{
-						Player::momentum[i] = 0;
-					}
+					{Player::momentum[0] += -0.4;}
+				}
+				if (Player::momentum[0] < 0)
+				{
+					Player::momentum[0] += 0.4;
+				}
+				if (Player::momentum[0] < 0.5 && Player::momentum[0] > -0.5)
+				{
+					Player::momentum[0] = 0;
 				}
 			}
-			if (i == 1)
-			{
-				if (moveCheckArray[3] == 0)
-				{	
-						Player::airCount++;
-						Player::momentum[1] += ((0.2)*(Player::airCount));
-				}
-			}
+		
+		}	
+	if (used[1] == 0)
+	{
+		if (moveCheckArray[3] != 1)
+		{
+			Player::airCount++;
+			Player::momentum[1] += ((0.2)*(Player::airCount));
+			Player::playerLocation[1] += Player::momentum[1];
 		}
 	}
 	return;

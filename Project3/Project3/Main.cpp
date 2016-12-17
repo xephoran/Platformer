@@ -13,7 +13,8 @@ int main()
 	{
 		if (gamestate == 0)
 		{
-			gamestate = splashScreen.displaySplash();
+			//gamestate = splashScreen.displaySplash();
+			gamestate = 1;
 		}
 		if (gamestate == 1)
 		{

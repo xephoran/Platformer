@@ -1,11 +1,15 @@
 ﻿  Player.cpp
-c:\users\eheit\documents\github\platformer\project3\project3\player.cpp(13): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\eheit\documents\github\platformer\project3\project3\player.cpp(14): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\eheit\documents\github\platformer\project3\project3\player.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\eheit\documents\github\platformer\project3\project3\player.cpp(123): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-c:\users\eheit\documents\github\platformer\project3\project3\player.cpp(150): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-c:\users\eheit\documents\github\platformer\project3\project3\player.cpp(178): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-c:\users\eheit\documents\github\platformer\project3\project3\player.cpp(210): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-c:\users\eheit\documents\github\platformer\project3\project3\player.cpp(286): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Project3.vcxproj -> C:\Users\eheit\Documents\GitHub\Platformer\Project3\x64\Debug\Project3.exe
-  Project3.vcxproj -> C:\Users\eheit\Documents\GitHub\Platformer\Project3\x64\Debug\Project3.pdb (Partial PDB)
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(13): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(14): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(25): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(36): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(52): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(131): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(160): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(189): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(215): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(238): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\documents\github\sfml platformer\platformer\project3\project3\player.cpp(287): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Project3.vcxproj -> C:\Users\eheit\Documents\GitHub\SFML Platformer\Platformer\Project3\x64\Debug\Project3.exe
+  Project3.vcxproj -> C:\Users\eheit\Documents\GitHub\SFML Platformer\Platformer\Project3\x64\Debug\Project3.pdb (Partial PDB)
