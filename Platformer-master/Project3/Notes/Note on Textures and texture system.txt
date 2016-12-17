@@ -1,0 +1,7 @@
+textures will be set up so that they can be passsed as an int and loaded from an int array. best way is to give numbers to each texture.
+
+Texture #'s:
+0_ - background
+1_ - layer above background element
+2_ - enemy/npc
+3_ - player textures

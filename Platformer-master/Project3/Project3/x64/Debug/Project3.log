@@ -1,0 +1,24 @@
+﻿  TextureManager.cpp
+  SplashScreen.cpp
+  Source.cpp
+  Player.cpp
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(10): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(11): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(12): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(22): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(33): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(48): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(127): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(156): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(185): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(211): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(234): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\eheit\desktop\platformer-master\project3\project3\player.cpp(283): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Main.cpp
+  LevelManager.cpp
+  Input.cpp
+  Game.cpp
+c:\users\eheit\desktop\platformer-master\project3\project3\game.cpp(58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Project3.vcxproj -> C:\Users\eheit\Desktop\Platformer-master\Project3\x64\Debug\Project3.exe
+  Project3.vcxproj -> C:\Users\eheit\Desktop\Platformer-master\Project3\x64\Debug\Project3.pdb (Partial PDB)
